@@ -1,0 +1,33 @@
+{
+  "name": "git-stats",
+  "version": "1.0.0",
+  "description": "CLI tool to analyze git commit statistics by author and date range",
+  "main": "dist/index.js",
+  "bin": {
+    "git-stats": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "cd test && ./test-runner.sh"
+  },
+  "keywords": ["git", "stats", "cli", "analytics", "commits"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ]
+}
