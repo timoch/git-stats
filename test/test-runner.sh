@@ -84,6 +84,22 @@ echo ""
 echo -e "${BLUE}🔍 Test 4: Show today's commits (should be all since we just created them)${NC}"
 node "$CLI_PATH"
 
+echo ""
+echo -e "${BLUE}🔍 Test 5: Since midnight - should show all commits from today${NC}"
+node "$CLI_PATH" --since="midnight"
+
+echo ""
+echo -e "${BLUE}🔍 Test 6: Since midnight with JSON format${NC}"
+node "$CLI_PATH" --since="midnight" --format=json
+
+echo ""
+echo -e "${BLUE}🔍 Test 7: Since midnight with specific author${NC}"
+node "$CLI_PATH" --since="midnight" --author="Alice"
+
+echo ""
+echo -e "${BLUE}🔍 Test 8: Since midnight with no merges${NC}"
+node "$CLI_PATH" --since="midnight" --no-merges
+
 # Clean up
 cd ..
 rm -rf "$TEST_DIR"
