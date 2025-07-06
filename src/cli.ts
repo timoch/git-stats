@@ -24,8 +24,7 @@ async function main() {
     
     // Default to today if no date range specified
     if (!options.since && !options.until) {
-      const today = new Date().toISOString().split('T')[0];
-      options.since = today;
+      options.since = "midnight";
     }
 
     const gitAnalyzer = new GitAnalyzer();

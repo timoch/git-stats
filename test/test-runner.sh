@@ -81,8 +81,21 @@ echo -e "${BLUE}🔍 Test 3: JSON output format${NC}"
 node "$CLI_PATH" --since="1 week ago" --format=json
 
 echo ""
-echo -e "${BLUE}🔍 Test 4: Show today's commits (should be all since we just created them)${NC}"
-node "$CLI_PATH"
+echo -e "${BLUE}🔍 Test 4: Default behavior - should show today's commits from midnight${NC}"
+DEFAULT_OUTPUT=$(node "$CLI_PATH")
+MIDNIGHT_OUTPUT=$(node "$CLI_PATH" --since="midnight")
+
+# Compare outputs to ensure default behavior matches --since="midnight"
+if [ "$DEFAULT_OUTPUT" = "$MIDNIGHT_OUTPUT" ]; then
+    echo -e "${GREEN}✅ Default behavior correctly uses midnight${NC}"
+else
+    echo -e "${RED}❌ Default behavior doesn't match --since=midnight${NC}"
+    echo "Default output:"
+    echo "$DEFAULT_OUTPUT"
+    echo "Midnight output:"
+    echo "$MIDNIGHT_OUTPUT"
+    exit 1
+fi
 
 echo ""
 echo -e "${BLUE}🔍 Test 5: Since midnight - should show all commits from today${NC}"
